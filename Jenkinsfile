@@ -26,11 +26,11 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh "scp -P ${SERVERPORT} -v ${IMAGE}.tar ${SSHUSER}@${SERVERNAME}:~/"
-                sh "scp -P ${SERVERPORT} -v ${YMLFILENAME} ${SSHUSER}@${SERVERNAME}:/srv/projektboerse/"
+                sh "scp -P ${SERVERPORT} -v ${YMLFILENAME} ${SSHUSER}@${SERVERNAME}:/srv/prox/"
                 sh "ssh -p ${SERVERPORT} ${SSHUSER}@${SERVERNAME} " +
                     "'docker image load -i ${IMAGE}.tar; " +
                     "docker network inspect ptb &> /dev/null || docker network create ptb; " +
-                    "docker-compose -p ptb -f /srv/projektboerse/${YMLFILENAME} up -d'"
+                    "docker-compose -p ptb -f /srv/prox/${YMLFILENAME} up -d'"
             }
         }
     }
