@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "mvn clean install"
+                sh "mvn clean package"
                 sh "docker image save -o ${IMAGE}.tar ${REPOSITORY}/${IMAGE}"
             }
         }
