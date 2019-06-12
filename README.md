@@ -5,7 +5,7 @@ acts as a single entrypoint for multiple services.
 
 ## Installation
 
-```
+```bash
 mvn clean install
 ```
 
@@ -16,14 +16,14 @@ docker image is build.
 
 ## Usage
 
-```
+```bash
 docker-compose -f docker-compose-api-gateway.yml up
 ```
 
 Starts a Docker container based on the compose file and the image. A Docker network named `prox` is
 required for the communication between services:
 
-```
+```bash
 docker network create prox
 ```
 
