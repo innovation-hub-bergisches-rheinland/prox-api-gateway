@@ -7,8 +7,8 @@ services:
       - "8081:8081"
     restart: always
     networks:
-      - ptb
+      - prox
 
 networks:
-  ptb:
+  prox:
     external: true
