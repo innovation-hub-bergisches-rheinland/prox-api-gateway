@@ -1,8 +1,8 @@
-version: '3'
+version: "3.7"
 
 services:
   api-gateway:
-    image: ptb-gp-ss2019.archi-lab.io/api-gateway
+    image: docker.nexus.archi-lab.io/archilab/prox-api-gateway
     ports:
       - "8081:8081"
     restart: always

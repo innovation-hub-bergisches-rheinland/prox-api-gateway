@@ -7,11 +7,11 @@ pipeline {
     }
 
     environment {
-        REPOSITORY = "ptb-gp-ss2019.archi-lab.io"
-        IMAGE = "api-gateway"
-        SERVERNAME = "fsygs15.inf.fh-koeln.de"
-        SERVERPORT = "22413"
-        SSHUSER = "jenkins"
+        REPOSITORY  = "docker.nexus.archi-lab.io/archilab"
+        IMAGE       = "prox-api-gateway"
+        SERVERNAME  = "fsygs15.inf.fh-koeln.de"
+        SERVERPORT  = "22413"
+        SSHUSER     = "jenkins"
         YMLFILENAME = "docker-compose-api-gateway.yml"
     }
 
