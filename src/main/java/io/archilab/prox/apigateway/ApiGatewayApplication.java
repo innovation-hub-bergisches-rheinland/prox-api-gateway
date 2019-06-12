@@ -1,4 +1,4 @@
-package io.archilab.projektboerse.apigateway;
+package io.archilab.prox.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
