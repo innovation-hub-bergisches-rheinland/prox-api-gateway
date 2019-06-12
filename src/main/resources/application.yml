@@ -1,0 +1,37 @@
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://service-discovery:8761/eureka/
+    instance:
+        hostname: api-gateway
+server:
+    port: 8081
+spring:
+    application:
+        name: api-gateway
+zuul:
+    add-host-header: true
+    addProxyHeaders: false
+    ignored-services: '*'
+    routes:
+        modules:
+            path: /modules/**
+            service-id: module-service
+            strip-prefix: false
+        projectmodules:
+            path: /projectModules/**
+            service-id: project-service
+            strip-prefix: false
+        projects:
+            path: /projects/**
+            service-id: project-service
+            strip-prefix: false
+        projectstudycourses:
+            path: /projectStudyCourses/**
+            service-id: project-service
+            strip-prefix: false
+        studycourses:
+            path: /studyCourses/**
+            service-id: module-service
+            strip-prefix: false
+    sensitiveHeaders: Cookie,Set-Cookie
