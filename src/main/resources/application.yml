@@ -10,7 +10,7 @@ spring:
 zuul:
   add-host-header: true
   addProxyHeaders: false
-  ignored-services: '*'
+  ignored-services: "*"
   routes:
     modules:
       path: /modules/**
