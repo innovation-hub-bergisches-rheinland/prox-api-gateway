@@ -11,23 +11,8 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "mvn clean install" // Führt den Maven build aus
-                sh "docker image save -o ${IMAGE}.tar ${REPOSITORY}/${IMAGE}" // Docker image als tar Datei speichern
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                echo "SonarQube..."
-            }
-        }
-        stage("Test") {
-            steps {
-                echo "Testing..."
-            }
-        }
-        stage("Code Quality Check") {
-            steps {
-                echo "Code Quality Check..."
+                sh "mvn clean install"
+                sh "docker image save -o ${IMAGE}.tar ${REPOSITORY}/${IMAGE}"
             }
         }
         stage("Deploy") {
