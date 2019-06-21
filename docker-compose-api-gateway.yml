@@ -1,6 +1,7 @@
 version: "3.7"
 
 services:
+
   api-gateway:
     image: docker.nexus.archi-lab.io/archilab/prox-api-gateway
     ports:
