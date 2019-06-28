@@ -29,10 +29,10 @@ pipeline {
                 sh "scp -P ${SERVERPORT} -v ${YMLFILENAME} ${SSHUSER}@${SERVERNAME}:/srv/prox/"
                 sh "ssh -p ${SERVERPORT} ${SSHUSER}@${SERVERNAME} " +
 //                        "'docker image load -i ${IMAGE}.tar; " +
-                        "\"POM_ARTIFACTID=${POM_ARTIFACTID}; " +
-                        "POM_VERSION=${POM_VERSION}; " +
-                        "docker network inspect prox &> /dev/null || docker network create prox; " +
-                        "docker-compose -p prox -f /srv/prox/${YMLFILENAME} up -d\""
+                        "POM_ARTIFACTID=${POM_ARTIFACTID} " +
+                        "POM_VERSION=${POM_VERSION} " +
+                        "docker network inspect prox &> /dev/null || docker network create prox " +
+                        "docker-compose -p prox -f /srv/prox/${YMLFILENAME} up -d"
             }
         }
     }
