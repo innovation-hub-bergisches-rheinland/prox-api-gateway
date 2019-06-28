@@ -29,7 +29,7 @@ pipeline {
             steps {
 //                sh "scp -P ${SERVERPORT} -v ${IMAGE}.tar ${SSHUSER}@${SERVERNAME}:~/"
                 sh "scp -P ${SERVERPORT} -v ${YMLFILENAME} ${SSHUSER}@${SERVERNAME}:/srv/prox/"
-                sh "echo ${IMAGE} ${TAG}"
+                echo "${IMAGE} ${TAG}"
                 sh "ssh -p ${SERVERPORT} ${SSHUSER}@${SERVERNAME} " +
                         "docker network inspect prox &> /dev/null || docker network create prox " +
                         "docker-compose -p prox -f /srv/prox/${YMLFILENAME} up -d'"
