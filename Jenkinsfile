@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "mvn clean package -Drevision=dev-${BUILD_NUMBER}"
+                sh "mvn clean deploy -Drevision=dev-${BUILD_NUMBER}"
 //                sh "docker image save -o ${IMAGE}.tar ${REPOSITORY}/${IMAGE}"
             }
         }
