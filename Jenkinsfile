@@ -31,7 +31,8 @@ pipeline {
 //                        "'docker image load -i ${IMAGE}.tar; " +
                         "-o SendEnv=POM_ARTIFACTID " +
                         "-o SendEnv=POM_VERSION " +
-                        "'docker network inspect prox &> /dev/null || docker network create prox " +
+                        "'export POM_ARTIFACTID; export POM_VERSION " +
+                        "docker network inspect prox &> /dev/null || docker network create prox " +
                         "docker-compose -p prox -f /srv/prox/${YMLFILENAME} up -d'"
             }
         }
