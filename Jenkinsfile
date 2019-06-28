@@ -8,6 +8,8 @@ pipeline {
 
     environment {
 //        REPOSITORY = "docker.nexus.archi-lab.io/archilab"
+        IMAGE = readMavenPom().getArtifactId()
+        TAG = readMavenPom().getVersion()
 //        IMAGE = "prox-api-gateway"
         SERVERNAME = "fsygs15.inf.fh-koeln.de"
         SERVERPORT = "22413"
@@ -27,7 +29,7 @@ pipeline {
             steps {
 //                sh "scp -P ${SERVERPORT} -v ${IMAGE}.tar ${SSHUSER}@${SERVERNAME}:~/"
                 sh "scp -P ${SERVERPORT} -v ${YMLFILENAME} ${SSHUSER}@${SERVERNAME}:/srv/prox/"
-                sh "echo ${POM_ARTIFACTID} ${POM_VERSION}"
+                sh "echo ${IMAGE} ${TAG}"
                 sh "ssh -p ${SERVERPORT} ${SSHUSER}@${SERVERNAME} " +
                         "docker network inspect prox &> /dev/null || docker network create prox " +
                         "docker-compose -p prox -f /srv/prox/${YMLFILENAME} up -d'"
