@@ -9,7 +9,7 @@ pipeline {
     environment {
 //        REPOSITORY = "docker.nexus.archi-lab.io/archilab"
         IMAGE = readMavenPom().getArtifactId()
-        TAG = readMavenPom().getVersion()
+        TAG = "dev-${BUILD_NUMBER}"
 //        IMAGE = "prox-api-gateway"
         SERVERNAME = "fsygs15.inf.fh-koeln.de"
         SERVERPORT = "22413"
@@ -20,7 +20,7 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh "mvn clean deploy -Drevision=dev-${BUILD_NUMBER}"
+                sh "mvn clean deploy -Drevision=${TAG}"
 //                sh "docker image save -o ${IMAGE}.tar ${REPOSITORY}/${IMAGE}"
             }
         }
