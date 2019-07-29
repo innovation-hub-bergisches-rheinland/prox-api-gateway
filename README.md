@@ -17,7 +17,7 @@ docker image is build.
 ## Local usage
 
 Powershell
-```ps
+```posh
 $env:IMAGE='prox-api-gateway'; `
 $env:TAG='latest'; `
 docker-compose -f docker-compose.yml up
