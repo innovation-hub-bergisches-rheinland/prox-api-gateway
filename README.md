@@ -14,10 +14,20 @@ Executes the
 up to the install phase. During package phase a runnable JAR is created and during install phase a
 docker image is build.
 
-## Usage
+## Local usage
 
+Powershell
+```ps
+$env:IMAGE='prox-api-gateway'; `
+$env:TAG='latest'; `
+docker-compose -f docker-compose.yml up
+```
+
+Bash/Shell
 ```bash
-docker-compose -f docker-compose-api-gateway.yml up
+export IMAGE="prox-api-gateway" &&
+export TAG="latest" &&
+docker-compose -f docker-compose.yml up
 ```
 
 Starts a Docker container based on the compose file and the image. A Docker network named `prox` is
@@ -32,3 +42,4 @@ docker network create prox
 This service is currently developed by members of the ArchiLab staff:
 
 - Julian Lengelsen ([@jlengelsen](https://github.com/jlengelsen))
+- Rudolf Grauberger ([@rudolfgrauberger](https://github.com/rudolfgrauberger))
