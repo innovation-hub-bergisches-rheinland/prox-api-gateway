@@ -1,0 +1,12 @@
+version: "3.6"
+
+services:
+
+  api-gateway:
+    deploy:
+      replicas: 1
+      restart_policy: any
+      delay: 5s
+      max_attempts: 3
+      window: 120s
+

@@ -20,14 +20,14 @@ Powershell
 ```posh
 $env:IMAGE='prox-api-gateway'; `
 $env:TAG='latest'; `
-docker-compose -f docker-compose.yml up
+docker-compose -f ./src/main/docker/docker-compose.yml up
 ```
 
 Bash/Shell
 ```bash
 export IMAGE="prox-api-gateway" &&
 export TAG="latest" &&
-docker-compose -f docker-compose.yml up
+docker-compose -f ./src/main/docker/docker-compose.yml up
 ```
 
 Starts a Docker container based on the compose file and the image. A Docker network named `prox` is
