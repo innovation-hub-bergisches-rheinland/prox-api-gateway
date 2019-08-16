@@ -3,7 +3,7 @@ node {
 
     stage('Checkout') {
         git url: 'https://github.com/Archi-Lab/prox-api-gateway.git'
-        git branch: 'jenkins-migration'
+        git branch: 'dev'
     }
 
     stage('Build') {
