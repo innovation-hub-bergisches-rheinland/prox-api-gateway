@@ -25,7 +25,7 @@ zuul:
       service-id: project-service
       strip-prefix: false
     projectmodules-profile:
-      path: profile//projectModules/**
+      path: profile/projectModules/**
       service-id: project-service
       strip-prefix: false
     projects:
@@ -51,5 +51,13 @@ zuul:
     studycourses-profile:
       path: /profile/studyCourses/**
       service-id: module-service
+      strip-prefix: false
+    tags:
+      path: /projectTags/**
+      service-id: project-service
+      strip-prefix: false
+    tags-profile:
+      path: /profile/projectTags/**
+      service-id: project-service
       strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
