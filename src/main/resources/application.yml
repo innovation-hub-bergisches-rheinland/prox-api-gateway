@@ -53,11 +53,11 @@ zuul:
       service-id: module-service
       strip-prefix: false
     tags:
-      path: /projectTags/**
+      path: /tags/**
       service-id: project-service
       strip-prefix: false
     tags-profile:
-      path: /profile/projectTags/**
+      path: /profile/tags/**
       service-id: project-service
       strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
