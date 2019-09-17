@@ -54,10 +54,10 @@ zuul:
       strip-prefix: false
     tags:
       path: /tags/**
-      service-id: project-service
+      service-id: tag-service
       strip-prefix: false
     tags-profile:
       path: /profile/tags/**
-      service-id: project-service
+      service-id: tag-service
       strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
