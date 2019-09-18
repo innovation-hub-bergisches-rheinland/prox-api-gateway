@@ -56,6 +56,10 @@ zuul:
       path: /tags/**
       service-id: tag-service
       strip-prefix: false
+    tagCollections:
+      path: /tagCollections/**
+      service-id: tag-service
+      strip-prefix: false
     tags-profile:
       path: /profile/tags/**
       service-id: tag-service
