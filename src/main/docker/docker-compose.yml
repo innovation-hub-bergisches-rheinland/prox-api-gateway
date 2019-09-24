@@ -1,9 +1,9 @@
-version: "3.6"
+version: "3.7"
 
 services:
 
   api-gateway:
-    image: docker.nexus.archi-lab.io/archilab/${IMAGE}:${TAG}
+    image: ${REPOSITORY}/${IMAGE}:${TAG}
     ports:
       - "8081:8081"
     networks:

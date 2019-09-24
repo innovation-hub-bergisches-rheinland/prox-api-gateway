@@ -67,5 +67,16 @@ zuul:
     tags-profile:
       path: /profile/tags/**
       service-id: tag-service
+    proposal:
+      path: /proposal/**
+      service-id: proposal-service
+      strip-prefix: false
+    proposals:
+      path: /proposals/**
+      service-id: proposal-service
+      strip-prefix: false
+    proposals-profile:
+      path: /profile/proposals/**
+      service-id: proposal-service
       strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
