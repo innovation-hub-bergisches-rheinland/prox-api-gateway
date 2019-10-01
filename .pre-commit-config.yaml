@@ -1,0 +1,5 @@
+repos:
+-   repo: https://github.com/Archi-Lab/archilab-pre-commit-hooks
+    rev: 557fdc4eaa04570a6f49c16860ef72cbf2ee7fe3
+    hooks:
+    -   id: google-java-format
