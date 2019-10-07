@@ -52,6 +52,14 @@ zuul:
       path: /profile/studyCourses/**
       service-id: module-service
       strip-prefix: false
+    search-project:
+        path: /search/**
+        service-id: search-service
+        strip-prefix: false
+    search-profile:
+      path: /profile/search/**
+      service-id: search-service
+      strip-prefix: false
     tags:
       path: /tags/**
       service-id: tag-service
