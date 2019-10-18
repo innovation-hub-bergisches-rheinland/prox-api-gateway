@@ -2,8 +2,15 @@ const path = require("path");
 module.exports = {
   "*.java": [
     absolutePaths => {
-      const resolvedPaths = absolutePaths.map(file => path.resolve(file));
-      return `mvn spotless:apply -DspotlessFiles=${resolvedPaths.join(",")}`;
+      let resolvedPaths = absolutePaths;
+
+      if (process.platform === "win32") {
+        resolvedPaths = absolutePaths
+          .map(file => path.resolve(file))
+          .map(file => file.split("\\").join("\\\\"));
+      }
+
+      return `mvn spotless:apply -X -DspotlessFiles=${resolvedPaths.join(",")}`;
     },
     "git add"
   ],
