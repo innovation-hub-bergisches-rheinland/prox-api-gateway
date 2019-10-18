@@ -8,9 +8,14 @@ module.exports = {
         resolvedPaths = absolutePaths
           .map(file => path.resolve(file))
           .map(file => file.split("\\").join("\\\\"));
+        return `./mvnw.cmd spotless:apply -X -DspotlessFiles=${resolvedPaths.join(
+          ","
+        )}`;
       }
 
-      return `mvn spotless:apply -X -DspotlessFiles=${resolvedPaths.join(",")}`;
+      return `./mvnw spotless:apply -X -DspotlessFiles=${resolvedPaths.join(
+        ","
+      )}`;
     },
     "git add"
   ],
