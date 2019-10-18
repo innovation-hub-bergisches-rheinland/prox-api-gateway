@@ -24,7 +24,6 @@
     <keycloak.version>6.0.1</keycloak.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <revision>0.1.0</revision>
-    <spotless.include></spotless.include>
     <spotless.version>1.25.1</spotless.version>
     <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
     <tidy-maven.version>1.1.0</tidy-maven.version>
@@ -122,9 +121,6 @@
           <java>
             <googleJavaFormat>
             </googleJavaFormat>
-            <includes>
-              <include>${spotless.include}</include>
-            </includes>
             <removeUnusedImports/>
           </java>
         </configuration>
