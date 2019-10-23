@@ -22,3 +22,6 @@ buildNumber.properties
 .settings
 .classpath
 .project
+
+/node
+/node_modules
