@@ -5,18 +5,40 @@ acts as a single entrypoint for multiple services.
 
 ## Installation
 
-```bash
-mvn clean install
+After a `git clone` or download the project the following command must be executed once to initialize the projects.
+
+Windows (CMD/PowerShell)
+
+```posh
+# Switch to project folder
+cd .\prox-api-gateway\
+# Execute initial build for git hooks...
+.\mvnw.cmd clean test
 ```
 
-Executes the
-[Maven default lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)
-up to the install phase. During package phase a runnable JAR is created and during install phase a
-docker image is build.
+Linux/MacOS (Bash/Terminal)
 
-## Local usage
+```bash
+# Switch to project folder
+cd prox-api-gateway/
+# Execute initial build for git hooks...
+./mvnw clean test
+```
+
+Executes the [Maven default lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) up to the `test` phase. During the `package` phase, an executable JAR and the Docker image are created.
+
+## Local usage with docker
+
+A Docker network named `prox` is required for the communication between services:
+
+```bash
+docker network create prox
+```
+
+Starts a Docker container based on the compose file and the image.
 
 Powershell
+
 ```posh
 $env:IMAGE='prox-api-gateway'; `
 $env:TAG='latest'; `
@@ -24,20 +46,15 @@ docker-compose -f ./src/main/docker/docker-compose.yml up
 ```
 
 Bash/Shell
+
 ```bash
 export IMAGE="prox-api-gateway" &&
 export TAG="latest" &&
 docker-compose -f ./src/main/docker/docker-compose.yml up
 ```
 
-Starts a Docker container based on the compose file and the image. A Docker network named `prox` is
-required for the communication between services:
-
-```bash
-docker network create prox
-```
-
 ## Local usage in IntelliJ IDEA
+
 For the necessary steps please look in [Run/Debug in IntelliJ IDEA](https://github.com/Archi-Lab/prox-local-setup#rundebug-in-intellij-idea).
 
 ## About the Team
