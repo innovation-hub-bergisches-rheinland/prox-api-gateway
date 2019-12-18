@@ -68,12 +68,14 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
         <configuration>
           <skip>true</skip>
         </configuration>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-install-plugin</artifactId>
         <configuration>
           <skip>true</skip>
@@ -85,6 +87,7 @@
         <version>${tidy-maven.version}</version>
         <executions>
           <execution>
+            <id>process-sources</id>
             <phase>process-sources</phase>
             <goals>
               <goal>pom</goal>
@@ -101,13 +104,13 @@
         </configuration>
         <executions>
           <execution>
-            <id>install node and npm</id>
+            <id>install-node-and-npm</id>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
           </execution>
           <execution>
-            <id>npm install</id>
+            <id>npm-install</id>
             <goals>
               <goal>npm</goal>
             </goals>
@@ -135,6 +138,7 @@
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
+            <id>unpack</id>
             <phase>package</phase>
             <configuration>
               <artifactItems>
