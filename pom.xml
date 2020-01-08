@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.5.RELEASE</version>
+    <version>2.2.1.RELEASE</version>
   </parent>
 
   <groupId>io.archi-lab.prox</groupId>
@@ -17,16 +17,17 @@
 
   <properties>
     <changelist>-SNAPSHOT</changelist>
-    <dockerfile-maven.version>1.4.10</dockerfile-maven.version>
     <docker.image.prefix>docker.nexus.archi-lab.io/archilab</docker.image.prefix>
+    <dockerfile-maven.version>1.4.13</dockerfile-maven.version>
+    <frontend-maven.nodeVersion>v13.2.0</frontend-maven.nodeVersion>
     <frontend-maven.version>1.8.0</frontend-maven.version>
-    <java.version>1.8</java.version>
-    <keycloak.version>6.0.1</keycloak.version>
+    <java.version>11</java.version>
+    <keycloak.version>4.8.3.Final</keycloak.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <revision>0.1.0</revision>
-    <spotless.version>1.25.1</spotless.version>
-    <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
-    <tidy-maven.version>1.1.0</tidy-maven.version>
+    <sortpom.version>2.10.0</sortpom.version>
+    <spotless.version>1.26.0</spotless.version>
+    <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
   </properties>
 
   <dependencyManagement>
@@ -67,27 +68,26 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
+        <groupId>com.github.ekryd.sortpom</groupId>
+        <artifactId>sortpom-maven-plugin</artifactId>
+        <version>${sortpom.version}</version>
         <configuration>
-          <skip>true</skip>
+          <predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <sortProperties>true</sortProperties>
+          <keepBlankLines>true</keepBlankLines>
+          <sortDependencies>scope,groupId,artifactId</sortDependencies>
+          <createBackupFile>false</createBackupFile>
+          <ignoreLineSeparators>false</ignoreLineSeparators>
+          <expandEmptyElements>false</expandEmptyElements>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-install-plugin</artifactId>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>tidy-maven-plugin</artifactId>
-        <version>${tidy-maven.version}</version>
         <executions>
           <execution>
-            <phase>process-sources</phase>
+            <id>sort-pom</id>
             <goals>
-              <goal>pom</goal>
+              <goal>sort</goal>
             </goals>
+            <phase>process-sources</phase>
           </execution>
         </executions>
       </plugin>
@@ -96,20 +96,22 @@
         <artifactId>frontend-maven-plugin</artifactId>
         <version>${frontend-maven.version}</version>
         <configuration>
-          <nodeVersion>v12.12.0</nodeVersion>
+          <nodeVersion>${frontend-maven.nodeVersion}</nodeVersion>
         </configuration>
         <executions>
           <execution>
-            <id>install node and npm</id>
+            <id>install-node-and-npm</id>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
+            <phase>generate-resources</phase>
           </execution>
           <execution>
-            <id>npm install</id>
+            <id>npm-install</id>
             <goals>
               <goal>npm</goal>
             </goals>
+            <phase>generate-resources</phase>
           </execution>
         </executions>
       </plugin>
@@ -119,9 +121,8 @@
         <version>${spotless.version}</version>
         <configuration>
           <java>
-            <googleJavaFormat>
-            </googleJavaFormat>
-            <removeUnusedImports/>
+            <googleJavaFormat />
+            <removeUnusedImports />
           </java>
         </configuration>
       </plugin>
@@ -134,6 +135,10 @@
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
+            <id>unpack</id>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
             <phase>package</phase>
             <configuration>
               <artifactItems>
@@ -144,11 +149,22 @@
                 </artifactItem>
               </artifactItems>
             </configuration>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>com.spotify</groupId>
@@ -164,12 +180,14 @@
             <goals>
               <goal>build</goal>
             </goals>
+            <phase>package</phase>
           </execution>
           <execution>
             <id>docker-tag</id>
             <goals>
               <goal>tag</goal>
             </goals>
+            <phase>package</phase>
             <configuration>
               <tag>${project.version}</tag>
             </configuration>
@@ -179,6 +197,7 @@
             <goals>
               <goal>push</goal>
             </goals>
+            <phase>deploy</phase>
             <configuration>
               <tag>${project.version}</tag>
             </configuration>
@@ -187,4 +206,39 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>toolchain</id>
+      <activation>
+        <file>
+          <exists>${user.home}/.m2/toolchains.xml</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-toolchains-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+              <toolchains>
+                <jdk>
+                  <version>${java.version}</version>
+                </jdk>
+              </toolchains>
+            </configuration>
+            <executions>
+              <execution>
+                <id>toolchain</id>
+                <goals>
+                  <goal>toolchain</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
