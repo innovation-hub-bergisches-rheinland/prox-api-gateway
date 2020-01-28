@@ -15,62 +15,81 @@ zuul:
     modules:
       path: /modules/**
       service-id: module-service
+      strip-prefix: false
     modules-profile:
       path: /profile/modules/**
       service-id: module-service
+      strip-prefix: false
     projectmodules:
       path: /projectModules/**
       service-id: project-service
+      strip-prefix: false
     projectmodules-profile:
       path: /profile/projectModules/**
       service-id: project-service
+      strip-prefix: false
     projects:
       path: /projects/**
       service-id: project-service
+      strip-prefix: false
     projects-profile:
       path: /profile/projects/**
       service-id: project-service
+      strip-prefix: false
     projectstudycourses:
       path: /projectStudyCourses/**
       service-id: project-service
+      strip-prefix: false
     projectstudycourses-profile:
       path: /profile/projectStudyCourses/**
       service-id: project-service
+      strip-prefix: false
     studycourses:
       path: /studyCourses/**
       service-id: module-service
+      strip-prefix: false
     studycourses-profile:
       path: /profile/studyCourses/**
       service-id: module-service
+      strip-prefix: false
     search-project:
       path: /search/**
       service-id: search-service
+      strip-prefix: false
     search-profile:
       path: /profile/search/**
       service-id: search-service
+      strip-prefix: false
     tags:
       path: /tags/**
       service-id: tag-service
+      strip-prefix: false
     tags-profile:
       path: /profile/tags/**
       service-id: tag-service
+      strip-prefix: false
     tagcollections:
       path: /tagCollections/**
       service-id: tag-service
+      strip-prefix: false
     tagcollections-profile:
       path: /profile/tagCollections/**
       service-id: tag-service
+      strip-prefix: false
     tagrecommendations:
       path: /tagRecommendations/**
       service-id: tag-service
+      strip-prefix: false
     tagrecommendations-profile:
       path: /profile/tagRecommendations/**
       service-id: tag-service
+      strip-prefix: false
     proposals:
       path: /proposals/**
       service-id: proposal-service
+      strip-prefix: false
     proposals-profile:
       path: /profile/proposals/**
       service-id: proposal-service
+      strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
-  strip-prefix: false
