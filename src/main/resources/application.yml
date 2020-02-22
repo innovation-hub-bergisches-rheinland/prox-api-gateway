@@ -25,7 +25,7 @@ zuul:
       service-id: project-service
       strip-prefix: false
     projectmodules-profile:
-      path: profile//projectModules/**
+      path: /profile/projectModules/**
       service-id: project-service
       strip-prefix: false
     projects:
@@ -52,9 +52,37 @@ zuul:
       path: /profile/studyCourses/**
       service-id: module-service
       strip-prefix: false
-    proposal:
-      path: /proposal/**
-      service-id: proposal-service
+    search-project:
+      path: /search/**
+      service-id: search-service
+      strip-prefix: false
+    search-profile:
+      path: /profile/search/**
+      service-id: search-service
+      strip-prefix: false
+    tags:
+      path: /tags/**
+      service-id: tag-service
+      strip-prefix: false
+    tags-profile:
+      path: /profile/tags/**
+      service-id: tag-service
+      strip-prefix: false
+    tagcollections:
+      path: /tagCollections/**
+      service-id: tag-service
+      strip-prefix: false
+    tagcollections-profile:
+      path: /profile/tagCollections/**
+      service-id: tag-service
+      strip-prefix: false
+    tagrecommendations:
+      path: /tagRecommendations/**
+      service-id: tag-service
+      strip-prefix: false
+    tagrecommendations-profile:
+      path: /profile/tagRecommendations/**
+      service-id: tag-service
       strip-prefix: false
     proposals:
       path: /proposals/**
