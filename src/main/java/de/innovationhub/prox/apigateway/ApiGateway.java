@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.archilab.prox.apigateway;
+package de.innovationhub.prox.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

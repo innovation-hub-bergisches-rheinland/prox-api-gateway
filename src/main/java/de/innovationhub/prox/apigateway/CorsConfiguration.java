@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.archilab.prox.apigateway;
+package de.innovationhub.prox.apigateway;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
