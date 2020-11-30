@@ -7,6 +7,9 @@ server:
 spring:
   application:
     name: api-gateway
+springdoc:
+  swagger-ui:
+    urls: # Do not remove! Workaround to set swagger ui urls programmatically
 zuul:
   add-host-header: true
   addProxyHeaders: false
