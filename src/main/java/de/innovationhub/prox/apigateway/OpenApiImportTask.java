@@ -54,7 +54,7 @@ public class OpenApiImportTask {
     try {
       return this.eurekaClient.getNextServerFromEureka(serviceName, false).getHomePageUrl();
     } catch (Exception e) {
-      e.printStackTrace();
+      log.warn("Could not retrieve service '" + serviceName + "' url");
       return null;
     }
   }
