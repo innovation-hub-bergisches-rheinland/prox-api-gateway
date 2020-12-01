@@ -23,7 +23,7 @@
     <frontend-maven-plugin.version>1.10.3</frontend-maven-plugin.version>
     <java.version>11</java.version>
     <maven-toolchains-plugin.version.>3.0.0</maven-toolchains-plugin.version.>
-    <revision>0.1.0</revision>
+    <revision>0.1.1</revision>
     <sortpom-maven-plugin.version>2.12.0</sortpom-maven-plugin.version>
     <spotless-maven-plugin.version>2.5.0</spotless-maven-plugin.version>
     <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
@@ -42,14 +42,14 @@
   </dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.5.0</version>
-    </dependency>
-    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.5.0</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -69,12 +69,6 @@
           <artifactId>junit-vintage-engine</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger-common</artifactId>
-      <version>3.0.0</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
 
