@@ -95,4 +95,12 @@ zuul:
       path: /profile/proposals/**
       service-id: proposal-service
       strip-prefix: false
+    faculties:
+      path: /faculties/**
+      service-id: professor-profile-service
+      strip-prefix: false
+    professors:
+      path: /professors/**
+      service-id: professor-profile-service
+      strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
