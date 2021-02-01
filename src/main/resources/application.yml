@@ -12,7 +12,7 @@ springdoc:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
 zuul:
   add-host-header: true
-  addProxyHeaders: true
+  addProxyHeaders: false
   ignored-services: "*"
   routes:
     modules:
