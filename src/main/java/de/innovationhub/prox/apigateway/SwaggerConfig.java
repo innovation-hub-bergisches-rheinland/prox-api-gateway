@@ -14,7 +14,7 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 @Configuration
 public class SwaggerConfig {
 
-  private static final String[] SERVICES_TO_INCLUDE = {"module-service", "project-service", "tag-service"};
+  private static final String[] SERVICES_TO_INCLUDE = {"module-service", "project-service", "tag-service", "professor-profile-service"};
 
   @Primary
   @Bean
