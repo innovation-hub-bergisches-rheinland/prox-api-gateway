@@ -103,4 +103,12 @@ zuul:
       path: /professors/**
       service-id: professor-profile-service
       strip-prefix: false
+    moduleTypes:
+      path: /moduleTypes/**
+      service-id: project-service
+      strip-prefix: false
+    studyPrograms:
+      path: /studyPrograms/**
+      service-id: project-service
+      strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
