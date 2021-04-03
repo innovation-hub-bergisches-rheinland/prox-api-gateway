@@ -7,19 +7,22 @@ server:
 spring:
   application:
     name: api-gateway
+springdoc:
+  swagger-ui:
+    urls: # Do not remove! Workaround to set swagger ui urls programmatically
 zuul:
   add-host-header: true
   addProxyHeaders: false
   ignored-services: "*"
+  host:
+    time-to-live: -1
+    connect-timeout-millis: 5000
+    max-per-route-connections: 10000
+    max-total-connections: 5000
+    socket-timeout-millis: 60000
+    semaphore:
+      max-semaphores: 500
   routes:
-    modules:
-      path: /modules/**
-      service-id: module-service
-      strip-prefix: false
-    modules-profile:
-      path: /profile/modules/**
-      service-id: module-service
-      strip-prefix: false
     projectmodules:
       path: /projectModules/**
       service-id: project-service
@@ -43,14 +46,6 @@ zuul:
     projectstudycourses-profile:
       path: /profile/projectStudyCourses/**
       service-id: project-service
-      strip-prefix: false
-    studycourses:
-      path: /studyCourses/**
-      service-id: module-service
-      strip-prefix: false
-    studycourses-profile:
-      path: /profile/studyCourses/**
-      service-id: module-service
       strip-prefix: false
     search-project:
       path: /search/**
@@ -92,4 +87,32 @@ zuul:
       path: /profile/proposals/**
       service-id: proposal-service
       strip-prefix: false
+    faculties:
+      path: /faculties/**
+      service-id: professor-profile-service
+      strip-prefix: false
+    professors:
+      path: /professors/**
+      service-id: professor-profile-service
+      strip-prefix: false
+    moduleTypes:
+      path: /moduleTypes/**
+      service-id: project-service
+      strip-prefix: false
+    studyPrograms:
+      path: /studyPrograms/**
+      service-id: project-service
+      strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000
+  eureka:
+    enabled: true

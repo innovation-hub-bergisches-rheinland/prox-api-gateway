@@ -18,12 +18,13 @@
   <properties>
     <changelist>-SNAPSHOT</changelist>
     <docker.image.prefix>docker.nexus.archi-lab.io/ihbr</docker.image.prefix>
-    <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
+    <!-- Downgraded version due to: https://github.com/spotify/dockerfile-maven/issues/329 -->
+    <dockerfile-maven-plugin.version>1.4.10</dockerfile-maven-plugin.version>
     <frontend-maven-plugin.nodeVersion>v15.0.1</frontend-maven-plugin.nodeVersion>
     <frontend-maven-plugin.version>1.10.3</frontend-maven-plugin.version>
     <java.version>11</java.version>
     <maven-toolchains-plugin.version.>3.0.0</maven-toolchains-plugin.version.>
-    <revision>0.1.0</revision>
+    <revision>0.1.1</revision>
     <sortpom-maven-plugin.version>2.12.0</sortpom-maven-plugin.version>
     <spotless-maven-plugin.version>2.5.0</spotless-maven-plugin.version>
     <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
@@ -41,6 +42,11 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-boot-starter</artifactId>
+      <version>3.0.0</version>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
