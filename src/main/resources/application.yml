@@ -103,6 +103,14 @@ zuul:
       path: /studyPrograms/**
       service-id: project-service
       strip-prefix: false
+    companies:
+      path: /companies/**
+      service-id: company-profile-service
+      strip-prefix: false
+    languages:
+      path: /languages/**
+      service-id: company-profile-service
+      strip-prefix: false
   sensitiveHeaders: Cookie,Set-Cookie
 hystrix:
   command:
