@@ -7,120 +7,58 @@ server:
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+      routes:
+        - id: projects
+          uri: lb://project-service/projects
+          predicates:
+            - Path=/projects/**
+        - id: moduleTypes
+          uri: lb://project-service/moduleTypes
+          predicates:
+            - Path=/moduleTypes/**
+        - id: studyPrograms
+          uri: lb://project-service/studyPrograms
+          predicates:
+            - Path=/studyPrograms/**
+        - id: tags
+          uri: lb://tag-service/tags
+          predicates:
+            - Path=/tags/**
+        - id: tagCollections
+          uri: lb://tag-service/tagCollections
+          predicates:
+            - Path=/tagCollections/**
+        - id: tagRecommendations
+          uri: lb://tag-service/tagRecommendations
+          predicates:
+            - Path=/tagRecommendations/**
+        - id: faculties
+          uri: lb://professor-profile-service/faculties
+          predicates:
+            - Path=/faculties/**
+        - id: professors
+          uri: lb://professor-profile-service/professors
+          predicates:
+            - Path=/professors/**
+        - id: companies
+          uri: lb://company-profile-service/companies
+          predicates:
+            - Path=/companies/**
+        - id: languages
+          uri: lb://company-profile-service/languages
+          predicates:
+            - Path=/languages/**
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
-zuul:
-  add-host-header: true
-  addProxyHeaders: false
-  ignored-services: "*"
-  host:
-    time-to-live: -1
-    connect-timeout-millis: 5000
-    max-per-route-connections: 10000
-    max-total-connections: 5000
-    socket-timeout-millis: 60000
-    semaphore:
-      max-semaphores: 500
-  routes:
-    projectmodules:
-      path: /projectModules/**
-      service-id: project-service
-      strip-prefix: false
-    projectmodules-profile:
-      path: /profile/projectModules/**
-      service-id: project-service
-      strip-prefix: false
-    projects:
-      path: /projects/**
-      service-id: project-service
-      strip-prefix: false
-    projects-profile:
-      path: /profile/projects/**
-      service-id: project-service
-      strip-prefix: false
-    projectstudycourses:
-      path: /projectStudyCourses/**
-      service-id: project-service
-      strip-prefix: false
-    projectstudycourses-profile:
-      path: /profile/projectStudyCourses/**
-      service-id: project-service
-      strip-prefix: false
-    search-project:
-      path: /search/**
-      service-id: search-service
-      strip-prefix: false
-    search-profile:
-      path: /profile/search/**
-      service-id: search-service
-      strip-prefix: false
-    tags:
-      path: /tags/**
-      service-id: tag-service
-      strip-prefix: false
-    tags-profile:
-      path: /profile/tags/**
-      service-id: tag-service
-      strip-prefix: false
-    tagcollections:
-      path: /tagCollections/**
-      service-id: tag-service
-      strip-prefix: false
-    tagcollections-profile:
-      path: /profile/tagCollections/**
-      service-id: tag-service
-      strip-prefix: false
-    tagrecommendations:
-      path: /tagRecommendations/**
-      service-id: tag-service
-      strip-prefix: false
-    tagrecommendations-profile:
-      path: /profile/tagRecommendations/**
-      service-id: tag-service
-      strip-prefix: false
-    proposals:
-      path: /proposals/**
-      service-id: proposal-service
-      strip-prefix: false
-    proposals-profile:
-      path: /profile/proposals/**
-      service-id: proposal-service
-      strip-prefix: false
-    faculties:
-      path: /faculties/**
-      service-id: professor-profile-service
-      strip-prefix: false
-    professors:
-      path: /professors/**
-      service-id: professor-profile-service
-      strip-prefix: false
-    moduleTypes:
-      path: /moduleTypes/**
-      service-id: project-service
-      strip-prefix: false
-    studyPrograms:
-      path: /studyPrograms/**
-      service-id: project-service
-      strip-prefix: false
-    companies:
-      path: /companies/**
-      service-id: company-profile-service
-      strip-prefix: false
-    languages:
-      path: /languages/**
-      service-id: company-profile-service
-      strip-prefix: false
-  sensitiveHeaders: Cookie,Set-Cookie
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 30000
-ribbon:
-  ReadTimeout: 60000
-  connection-timeout: 3000
-  eureka:
-    enabled: true
