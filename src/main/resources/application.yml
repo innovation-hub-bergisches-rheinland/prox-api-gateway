@@ -9,6 +9,14 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      x-forwarded:
+        port-enabled: false
+        host-enabled: false
+        proto-enabled: false
+        port-append: false
+        host-append: false
+        proto-append: false
+        enabled: false
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
