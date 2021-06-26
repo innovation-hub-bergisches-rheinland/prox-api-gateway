@@ -18,6 +18,7 @@ spring:
           '[/**]':
             allowedOrigins: "*"
             allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
         - id: projects
           uri: lb://project-service/projects
