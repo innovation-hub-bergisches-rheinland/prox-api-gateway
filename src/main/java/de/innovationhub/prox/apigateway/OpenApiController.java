@@ -21,14 +21,14 @@ public class OpenApiController {
   private final RestTemplateBuilder restTemplateBuilder;
 
   @Autowired
-  public OpenApiController(@Qualifier("eurekaClient") EurekaClient eurekaClient, RestTemplateBuilder restTemplateBuilder) {
+  public OpenApiController(@Qualifier("eurekaClient") EurekaClient eurekaClient) {
     this.eurekaClient = eurekaClient;
-    this.restTemplateBuilder = restTemplateBuilder;
+    this.restTemplateBuilder = new RestTemplateBuilder();
   }
 
   @Bean
-  public RestTemplate restTemplate(RestTemplateBuilder builder) {
-    return builder.build();
+  public RestTemplate restTemplate() {
+    return this.restTemplateBuilder.build();
   }
 
   @GetMapping(value = "v3/api-docs", params = "group")
