@@ -65,6 +65,10 @@ spring:
           uri: lb://company-profile-service/languages
           predicates:
             - Path=/languages/**
+        - id: jobOffers
+          uri: lb://job-service/jobOffers
+          predicates:
+            - Path=/jobOffers/**
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
