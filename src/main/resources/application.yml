@@ -9,6 +9,10 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      httpclient:
+        wiretap: true
+      httpserver:
+        wiretap: true
       x-forwarded:
         port-enabled: false
         host-enabled: false
@@ -72,3 +76,8 @@ spring:
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    reactor.netty: DEBUG
