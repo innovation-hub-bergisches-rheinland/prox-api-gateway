@@ -1,7 +1,11 @@
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     serviceUrl:
       defaultZone: http://service-discovery:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
 server:
   port: 8081
 spring:
@@ -9,6 +13,9 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       x-forwarded:
         port-enabled: false
         host-enabled: false
@@ -25,48 +32,24 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
-        - id: projects
-          uri: lb://project-service/projects
+        - id: project-service
+          uri: lb://project-service
           predicates:
-            - Path=/projects/**
-        - id: moduleTypes
-          uri: lb://project-service/moduleTypes
+            - Path=/projects/**,/moduleTypes/**,/studyPrograms/**
+        - id: tag-service
+          uri: lb://tag-service
           predicates:
-            - Path=/moduleTypes/**
-        - id: studyPrograms
-          uri: lb://project-service/studyPrograms
+            - Path=/tags/**,/tagCollections/**,/tagRecommendations/**
+        - id: professor-profile-service
+          uri: lb://professor-profile-service
           predicates:
-            - Path=/studyPrograms/**
-        - id: tags
-          uri: lb://tag-service/tags
+            - Path=/faculties/**,/professors/**
+        - id: company-profile-service
+          uri: lb://company-profile-service
           predicates:
-            - Path=/tags/**
-        - id: tagCollections
-          uri: lb://tag-service/tagCollections
-          predicates:
-            - Path=/tagCollections/**
-        - id: tagRecommendations
-          uri: lb://tag-service/tagRecommendations
-          predicates:
-            - Path=/tagRecommendations/**
-        - id: faculties
-          uri: lb://professor-profile-service/faculties
-          predicates:
-            - Path=/faculties/**
-        - id: professors
-          uri: lb://professor-profile-service/professors
-          predicates:
-            - Path=/professors/**
-        - id: companies
-          uri: lb://company-profile-service/companies
-          predicates:
-            - Path=/companies/**
-        - id: languages
-          uri: lb://company-profile-service/languages
-          predicates:
-            - Path=/languages/**
-        - id: jobOffers
-          uri: lb://job-service/jobOffers
+            - Path=/companies/**,/languages/**
+        - id: job-service
+          uri: lb://job-service
           predicates:
             - Path=/jobOffers/**
 springdoc:
