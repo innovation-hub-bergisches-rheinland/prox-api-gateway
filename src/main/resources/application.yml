@@ -72,6 +72,3 @@ spring:
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
-logging:
-  level:
-    root: DEBUG
