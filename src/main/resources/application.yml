@@ -52,14 +52,6 @@ spring:
           uri: lb://job-service
           predicates:
             - Path=/jobOffers/**
-      httpserver:
-        wiretap: true
-      httpclient:
-        wiretap: true
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
-
-logging:
-  level:
-    root: TRACE
