@@ -51,7 +51,7 @@ spring:
         - id: job-service
           uri: lb://job-service
           predicates:
-            - Path=/jobOffers/**
+            - Path=/jobOffers/**,/jobOfferTypes/**,/jobOfferEntryLevels/**
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
