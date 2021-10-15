@@ -32,6 +32,10 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
+        - id: prox-user-service
+          uri: lb://prox-user-service
+          predicates:
+            - Path=/user/**,orgs/**,users/**
         - id: project-service
           uri: lb://project-service
           predicates:
