@@ -18,7 +18,6 @@
   <properties>
     <changelist>-SNAPSHOT</changelist>
     <docker.image.prefix>docker.nexus.archi-lab.io/ihbr</docker.image.prefix>
-    <!-- Downgraded version due to: https://github.com/spotify/dockerfile-maven/issues/329 -->
     <dockerfile-maven-plugin.version>1.4.10</dockerfile-maven-plugin.version>
     <frontend-maven-plugin.nodeVersion>v15.0.1</frontend-maven-plugin.nodeVersion>
     <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
@@ -52,13 +51,9 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
-    <!--<dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-    </dependency>-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+      <artifactId>spring-cloud-starter-gateway</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
