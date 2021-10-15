@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11.0.8_10-jre-openj9-0.21.0
+FROM eclipse-temurin:17-alpine
 
 VOLUME /tmp
 
