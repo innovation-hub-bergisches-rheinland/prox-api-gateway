@@ -35,7 +35,7 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/user/**,orgs/**,users/**
+            - Path=/user/**,/orgs/**,/users/**
         - id: project-service
           uri: lb://project-service
           predicates:
