@@ -6,13 +6,13 @@ acts as a single entrypoint for multiple services.
 #### A note on automatic formatting and linting
 
 We partially use the Node.js runtime and npm to introduce a consistent code formatting in the whole
-project. Doing so Maven will download and install Node and npm into the project directory using the 
+project. Doing so Maven will download and install Node and npm into the project directory using the
 [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
 and runs `npm ci`. This will install [scripts](./.husky) using husky into your git hooks.
 We understand that this process might sound malicious to you, and therefore you are free
-to disable the behaviour by explicitly disabling the maven profile `node`. Doing so will skip the 
-installation of node, npm and therefore will prevent installing the git hooks. However, we strongly 
-encourage you to adapt the process if you plan to contribute to this project as it keeps our 
+to disable the behaviour by explicitly disabling the maven profile `node`. Doing so will skip the
+installation of node, npm and therefore will prevent installing the git hooks. However, we strongly
+encourage you to adapt the process if you plan to contribute to this project as it keeps our
 code-base clean and in a consistent style without any additional effort.
 
 ## Installation
@@ -35,7 +35,7 @@ cd prox-api-gateway/
 ./mvnw clean test
 ```
 
-Executes the [Maven default lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) up to the `test` phase. 
+Executes the [Maven default lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) up to the `test` phase.
 
 ## Building
 
