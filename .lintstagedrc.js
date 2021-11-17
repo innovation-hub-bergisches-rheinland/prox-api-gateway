@@ -1,13 +1,17 @@
 const path = require("path");
+
 module.exports = {
-  "*.java": [
+  // Delegate the whole formatting to spotless
+  "*": [
     (absolutePaths) => {
       let resolvedPaths = absolutePaths;
 
       if (process.platform === "win32") {
+        console.log("ABCDEFG");
         resolvedPaths = absolutePaths
           .map((file) => path.resolve(file))
           .map((file) => file.split("\\").join("\\\\"));
+        console.log(resolvedPaths);
         return `./mvnw.cmd spotless:apply -X -DspotlessFiles=${resolvedPaths.join(
           ","
         )}`;
@@ -18,5 +22,4 @@ module.exports = {
       )}`;
     },
   ],
-  "*.{js,ts,css,scss,json,md,html,yml,yaml}": ["prettier --write"],
 };
