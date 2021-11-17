@@ -1,5 +1,6 @@
 package de.innovationhub.prox.apigateway;
 
+
 import com.netflix.discovery.EurekaClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,11 @@ public class OpenApiController {
   }
 
   @GetMapping(value = "v3/api-docs", params = "group")
-  public Mono<ResponseEntity<String>> getOpenApiDefinitionFromService(@RequestParam("group") String group) {
+  public Mono<ResponseEntity<String>> getOpenApiDefinitionFromService(
+      @RequestParam("group") String group) {
     String url = getServiceUrl(group);
 
-    if(url == null) {
+    if (url == null) {
       return Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
