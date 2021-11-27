@@ -24,12 +24,6 @@
         </property>
       </activation>
 
-      <properties>
-        <docker.publishRegistry.username>${env.DOCKER_REGISTRY_USER}</docker.publishRegistry.username>
-        <docker.publishRegistry.password>${env.DOCKER_REGISTRY_PASSWORD}</docker.publishRegistry.password>
-        <docker.publishRegistry.url>${env.DOCKER_REGISTRY}</docker.publishRegistry.url>
-      </properties>
-
     </profile>
   </profiles>
 </settings>
