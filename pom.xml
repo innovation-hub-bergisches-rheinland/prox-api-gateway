@@ -253,16 +253,6 @@
               <image>
                 <publish>true</publish>
               </image>
-              <docker>
-                <publishRegistry>
-                  <!--suppress UnresolvedMavenProperty -->
-                  <username>${env.DOCKER_REGISTRY_USER}</username>
-                  <!--suppress UnresolvedMavenProperty -->
-                  <password>${env.DOCKER_REGISTRY_PASSWORD}</password>
-                  <!--suppress UnresolvedMavenProperty -->
-                  <url>${env.DOCKER_REGISTRY}</url>
-                </publishRegistry>
-              </docker>
             </configuration>
           </plugin>
         </plugins>
@@ -317,13 +307,6 @@
                   <tag>latest</tag>
                 </tags>
               </image>
-              <docker>
-                <publishRegistry>
-                  <username>${env.DOCKER_REGISTRY_USER}</username>
-                  <password>${env.DOCKER_REGISTRY_PASSWORD}</password>
-                  <url>${env.DOCKER_REGISTRY}</url>
-                </publishRegistry>
-              </docker>
             </configuration>
           </plugin>
         </plugins>
