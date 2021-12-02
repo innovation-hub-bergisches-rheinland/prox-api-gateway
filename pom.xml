@@ -10,7 +10,7 @@
 
   <groupId>de.innovation-hub.prox</groupId>
   <artifactId>prox-api-gateway</artifactId>
-  <version>0.1.2-SNAPSHOT</version>
+  <version>0.1.3</version>
 
   <name>prox-api-gateway</name>
   <description>Prox API Gateway</description>
@@ -18,7 +18,7 @@
   <scm>
     <!-- Probably it would be better to use SSH here, but that's out of scope for now -->
     <developerConnection>scm:git:https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v0.1.3</tag>
     <url>https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway</url>
   </scm>
 
