@@ -1,0 +1,72 @@
+{{- if not .Values.config.existingConfigMap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "prox-api-gateway.fullname" . }}
+  labels:
+    {{- include "prox-api-gateway.labels" . | nindent 4 }}
+data:
+  application.yml: |-
+    eureka:
+      client:
+        serviceUrl:
+          defaultZone: http://prox-service-discovery:8761/eureka/
+        register-with-eureka: true
+        fetch-registry: true
+      instance:
+        hostname: prox-api-gateway
+        prefer-ip-address: false
+    server:
+      port: 8081
+    spring:
+      application:
+        name: api-gateway
+      cloud:
+        gateway:
+          discovery:
+            locator:
+              enabled: true
+          x-forwarded:
+            port-enabled: false
+            host-enabled: false
+            proto-enabled: false
+            port-append: false
+            host-append: false
+            proto-append: false
+            enabled: false
+          globalcors:
+            add-to-simple-url-handler-mapping: true
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowedMethods: "*"
+                allowedHeaders: "*"
+          routes:
+            - id: user-service
+              uri: lb://user-service
+              predicates:
+                - Path=/user/**,/orgs/**,/users/**
+            - id: project-service
+              uri: lb://project-service
+              predicates:
+                - Path=/projects/**,/moduleTypes/**,/studyPrograms/**
+            - id: tag-service
+              uri: lb://tag-service
+              predicates:
+                - Path=/tags/**,/tagCollections/**,/tagRecommendations/**
+            - id: professor-profile-service
+              uri: lb://professor-profile-service
+              predicates:
+                - Path=/faculties/**,/professors/**
+            - id: company-profile-service
+              uri: lb://company-profile-service
+              predicates:
+                - Path=/companies/**,/languages/**
+            - id: job-service
+              uri: lb://job-service
+              predicates:
+                - Path=/jobOffers/**,/jobOfferTypes/**,/jobOfferEntryLevels/**
+    springdoc:
+      swagger-ui:
+        urls: # Do not remove! Workaround to set swagger ui urls programmatically
+{{- end }}
