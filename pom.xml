@@ -9,8 +9,8 @@
   </parent>
 
   <groupId>de.innovation-hub.prox</groupId>
-  <version>1.0.0</version>
   <artifactId>prox-api-gateway</artifactId>
+  <version>1.0.0</version>
 
   <name>prox-api-gateway</name>
   <description>Prox API Gateway</description>
