@@ -8,20 +8,6 @@ eureka:
     fetch-registry: true
 server:
   port: 8081
-openapi:
-  definitions:
-    user-service:
-      path: "/q/openapi"
-    project-service:
-      path: "/v3/api-docs"
-    tag-service:
-      path: "/v3/api-docs"
-    professor-profile-service:
-      path: "/v3/api-docs"
-    company-profile-service:
-      path: "/v3/api-docs"
-    job-service:
-      path: "/v3/api-docs"
 spring:
   application:
     name: api-gateway
@@ -50,26 +36,38 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/user/**,/orgs/**,/users/**
+          metadata:
+            openApiPath: "/q/openapi"
         - id: project-service
           uri: lb://project-service
           predicates:
             - Path=/projects/**,/moduleTypes/**,/studyPrograms/**
+          metadata:
+            openApiPath: "/v3/api-docs"
         - id: tag-service
           uri: lb://tag-service
           predicates:
             - Path=/tags/**,/tagCollections/**,/tagRecommendations/**
+          metadata:
+            openApiPath: "/v3/api-docs"
         - id: professor-profile-service
           uri: lb://professor-profile-service
           predicates:
             - Path=/faculties/**,/professors/**
+          metadata:
+            openApiPath: "/v3/api-docs"
         - id: company-profile-service
           uri: lb://company-profile-service
           predicates:
             - Path=/companies/**,/languages/**
+          metadata:
+            openApiPath: "/v3/api-docs"
         - id: job-service
           uri: lb://job-service
           predicates:
             - Path=/jobOffers/**,/jobOfferTypes/**,/jobOfferEntryLevels/**
+          metadata:
+            openApiPath: "/v3/api-docs"
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
