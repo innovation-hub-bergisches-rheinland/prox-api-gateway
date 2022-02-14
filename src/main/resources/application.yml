@@ -8,6 +8,20 @@ eureka:
     fetch-registry: true
 server:
   port: 8081
+openapi:
+  definitions:
+    user-service:
+      path: "/q/openapi"
+    project-service:
+      path: "/v3/api-docs"
+    tag-service:
+      path: "/v3/api-docs"
+    professor-profile-service:
+      path: "/v3/api-docs"
+    company-profile-service:
+      path: "/v3/api-docs"
+    job-service:
+      path: "/v3/api-docs"
 spring:
   application:
     name: api-gateway

@@ -1,10 +1,11 @@
 package de.innovationhub.prox.apigateway;
 
 
-import com.netflix.discovery.EurekaClient;
+import java.net.URI;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.gateway.route.RouteDefinition;
+import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,40 +19,47 @@ import reactor.core.publisher.Mono;
 @RestController
 @Slf4j
 public class OpenApiController {
-
-  private final EurekaClient eurekaClient;
   private final WebClient webClient;
+  private final RouteDefinitionLocator routeDefinitionLocator;
+  private final OpenApiConfigurationProperties openApiConfigurationProperties;
 
   @Autowired
-  public OpenApiController(@Qualifier("eurekaClient") EurekaClient eurekaClient) {
-    this.eurekaClient = eurekaClient;
+  public OpenApiController(
+      RouteDefinitionLocator routeDefinitionLocator,
+      OpenApiConfigurationProperties openApiConfigurationProperties) {
+    this.routeDefinitionLocator = routeDefinitionLocator;
+    this.openApiConfigurationProperties = openApiConfigurationProperties;
     this.webClient = WebClient.builder().build();
   }
 
   @GetMapping(value = "v3/api-docs", params = "group")
   public Mono<ResponseEntity<String>> getOpenApiDefinitionFromService(
       @RequestParam("group") String group) {
-    String url = getServiceUrl(group);
-
-    if (url == null) {
-      return Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
-    return this.webClient
-        .get()
-        .uri(url + "v3/api-docs?group={group}", group)
+    return this.getOpenApiUrl(group)
+        .flatMap(it -> this.webClient.get().uri(it)
         .accept(MediaType.APPLICATION_JSON)
-        .exchange()
-        .flatMap(res -> res.bodyToMono(String.class))
-        .map(ResponseEntity::ok);
+        .exchangeToMono(res -> res.bodyToMono(String.class))
+        .map(ResponseEntity::ok));
   }
 
-  private String getServiceUrl(String serviceName) {
-    try {
-      return this.eurekaClient.getNextServerFromEureka(serviceName, false).getHomePageUrl();
-    } catch (Exception e) {
-      log.warn("Could not retrieve service '" + serviceName + "' url");
-      return null;
+  private Mono<URI> getOpenApiUrl(String serviceName) {
+    var definition = this.openApiConfigurationProperties.getDefinitions().get(serviceName);
+    if(definition == null) {
+      log.error("No Definition found for service " + serviceName);
+      return Mono.error(new RuntimeException("No Definition found for service " + serviceName));
     }
+    if(definition.getPath() == null) {
+      log.error("No OpenAPI Path defined for service " + serviceName);
+      return Mono.error(new RuntimeException("No OpenAPI Path defined for service " + serviceName));
+    }
+    return this.locateService(serviceName)
+        .map(s -> s.resolve(definition.getPath()));
+  }
+
+  private Mono<URI> locateService(String serviceName) {
+    return this.routeDefinitionLocator.getRouteDefinitions()
+        .filter(it -> it.getId().equals(serviceName))
+        .map(RouteDefinition::getUri)
+        .next();
   }
 }

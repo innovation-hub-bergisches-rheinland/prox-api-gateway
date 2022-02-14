@@ -3,6 +3,7 @@ package de.innovationhub.prox.apigateway;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,14 +15,12 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 @Configuration
 public class SwaggerConfig {
 
-  private static final String[] SERVICES_TO_INCLUDE = {
-    "project-service",
-    "tag-service",
-    "professor-profile-service",
-    "company-profile-service",
-    "job-service",
-    "user-service"
-  };
+  private final Set<String> SERVICES_TO_INCLUDE;
+
+  public SwaggerConfig(OpenApiConfigurationProperties openApiConfigurationProperties) {
+    this.SERVICES_TO_INCLUDE = openApiConfigurationProperties.getDefinitions()
+        .keySet();
+  }
 
   @Primary
   @Bean
@@ -31,7 +30,7 @@ public class SwaggerConfig {
       List<SwaggerResource> resources = resourcesProvider.get();
       resources.clear();
       resources.addAll(
-          Arrays.stream(SERVICES_TO_INCLUDE)
+          SERVICES_TO_INCLUDE.stream()
               .map(
                   service -> {
                     SwaggerResource resource = new SwaggerResource();
