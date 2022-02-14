@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.1.0...v1.1.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* resolve lb:// urls ([e1ca974](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/e1ca97444ff91a677e43eb6710abacc209aa8c44))
+
 ## [1.1.0](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.0.1...v1.1.0) (2022-02-14)
 
 ### Features
