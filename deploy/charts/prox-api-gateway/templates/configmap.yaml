@@ -7,25 +7,11 @@ metadata:
     {{- include "prox-api-gateway.labels" . | nindent 4 }}
 data:
   application.yml: |-
-    eureka:
-      client:
-        serviceUrl:
-          defaultZone: http://prox-service-discovery:8761/eureka/
-        register-with-eureka: true
-        fetch-registry: true
-      instance:
-        hostname: prox-api-gateway
-        prefer-ip-address: false
-    server:
-      port: 8081
     spring:
       application:
         name: api-gateway
       cloud:
         gateway:
-          discovery:
-            locator:
-              enabled: true
           x-forwarded:
             port-enabled: false
             host-enabled: false
@@ -43,31 +29,31 @@ data:
                 allowedHeaders: "*"
           routes:
             - id: project-service
-              uri: lb://project-service
+              uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
                 - Path=/projects/**,/moduleTypes/**,/studyPrograms/**
               metadata:
                 openApiPath: "/v3/api-docs"
             - id: tag-service
-              uri: lb://tag-service
+              uri: http://prox-tag-service.prox.svc.cluster.local:8080
               predicates:
                 - Path=/tags/**,/tagCollections/**,/tagRecommendations/**
               metadata:
                 openApiPath: "/v3/api-docs"
             - id: professor-profile-service
-              uri: lb://professor-profile-service
+              uri: http://prox-professor-profile-service.prox.svc.cluster.local:8080
               predicates:
                 - Path=/faculties/**,/professors/**
               metadata:
                 openApiPath: "/v3/api-docs"
             - id: company-profile-service
-              uri: lb://company-profile-service
+              uri: http://prox-company-profile-service.prox.svc.cluster.local:8080
               predicates:
                 - Path=/companies/**,/languages/**
               metadata:
                 openApiPath: "/v3/api-docs"
             - id: job-service
-              uri: lb://job-service
+              uri: http://prox-job-service.prox.svc.cluster.local:8080
               predicates:
                 - Path=/jobOffers/**,/jobOfferTypes/**,/jobOfferEntryLevels/**
               metadata:

@@ -1,21 +1,10 @@
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://service-discovery:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
 server:
-  port: 8081
+  port: 8080
 spring:
   application:
     name: api-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
       x-forwarded:
         port-enabled: false
         host-enabled: false
