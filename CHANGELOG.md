@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.1.1...v1.1.2) (2022-02-15)
+
+
+### Bug Fixes
+
+* remove obsolete eureka code parts ([3a58f9f](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/3a58f9f130de39e0025d1dfbcbeaac93fd557e96))
+
 ### [1.1.1](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.1.0...v1.1.1) (2022-02-14)
 
 
