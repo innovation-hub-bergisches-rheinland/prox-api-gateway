@@ -31,7 +31,7 @@ data:
             - id: project-service
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
-                - Path=/projects/**,/moduleTypes/**,/studyPrograms/**
+                - Path=/projects/**,/moduleTypes/**,/studyPrograms/**,/specializations/**
               metadata:
                 openApiPath: "/v3/api-docs"
             - id: tag-service

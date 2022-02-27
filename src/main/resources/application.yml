@@ -30,7 +30,7 @@ spring:
         - id: project-service
           uri: lb://project-service
           predicates:
-            - Path=/projects/**,/moduleTypes/**,/studyPrograms/**
+            - Path=/projects/**,/moduleTypes/**,/studyPrograms/**,/specializations/**
           metadata:
             openApiPath: "/v3/api-docs"
         - id: tag-service
