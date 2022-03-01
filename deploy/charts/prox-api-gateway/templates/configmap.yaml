@@ -61,7 +61,7 @@ data:
             - id: user-service
               uri: http://prox-user-service.prox.svc.cluster.local:8080
               predicates:
-                - Path=/users/**,/organizations/**
+                - Path=/users/**,/organizations/**,/user/**
               metadata:
                 openApiPath: "/q/openapi"
     springdoc:
