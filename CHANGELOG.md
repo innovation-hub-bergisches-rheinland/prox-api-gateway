@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.2.1...v1.2.2) (2022-03-30)
+
+
+### Bug Fixes
+
+* temporary fix for SpringShell ([a0da3b2](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/a0da3b2e27871af2a418912b759ddcab721af9af))
+
 ### [1.2.1](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.2.0...v1.2.1) (2022-03-01)
 
 
