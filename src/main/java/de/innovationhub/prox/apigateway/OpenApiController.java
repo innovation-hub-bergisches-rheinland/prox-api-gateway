@@ -2,7 +2,6 @@ package de.innovationhub.prox.apigateway;
 
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -47,9 +45,7 @@ public class OpenApiController {
         .getRoutes()
         .filter(it -> it.getId().equals(serviceName))
         .filter(it -> it.getMetadata().get(METADATA_CONFIG_KEY) instanceof String)
-        .map(
-            it ->
-                it.getUri().resolve((String) it.getMetadata().get(METADATA_CONFIG_KEY)))
+        .map(it -> it.getUri().resolve((String) it.getMetadata().get(METADATA_CONFIG_KEY)))
         .next();
   }
 }
