@@ -57,6 +57,11 @@ spring:
             - Path=/jobOffers/**,/jobOfferTypes/**,/jobOfferEntryLevels/**
           metadata:
             openApiPath: "/v3/api-docs"
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://login.aws.innovation-hub.de/auth/realms/innovation-hub-bergisches-rheinland
 springdoc:
   swagger-ui:
     urls: # Do not remove! Workaround to set swagger ui urls programmatically
