@@ -3,9 +3,9 @@ entries:
   prox-api-gateway:
   - apiVersion: v2
     appVersion: 1.3.0
-    created: "2022-05-13T15:12:39.297362883Z"
+    created: "2022-05-13T15:33:07.351963513Z"
     description: A Helm chart for Kubernetes
-    digest: 13e51b10572c1095501a1de278d9321c7fefa5d97bbe2e87486f2af2d74f346e
+    digest: 203e5edaece6b154e380244e5a80cfb6ebfb5797a464e779253c402433eb5f73
     name: prox-api-gateway
     type: application
     urls:
@@ -101,4 +101,4 @@ entries:
     urls:
     - https://innovation-hub-bergisches-rheinland.github.io/prox-api-gateway/prox-api-gateway-1.0.0.tgz
     version: 1.0.0
-generated: "2022-05-13T15:12:39.296679287Z"
+generated: "2022-05-13T15:33:07.351292505Z"
