@@ -33,17 +33,17 @@ public class UserInfoGatewayFilter implements GlobalFilter {
         .switchIfEmpty(Mono.error(new RuntimeException("Not authenticated")))
         .cast(JwtAuthenticationToken.class)
         .flatMap(userInformationRepository::findWithToken)
-        .doOnNext(userInformation -> {
+        .map(userInformation -> {
           try {
-            exchange.getRequest().getHeaders().add(USER_INFO_HEADER, objectMapper.writeValueAsString(userInformation));
+            return exchange.getRequest().mutate().header(USER_INFO_HEADER, objectMapper.writeValueAsString(userInformation)).build();
           } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
           }
         })
-        .flatMap(it -> chain.filter(exchange))
         // We want to continue the filter chain if the user information cannot be resolved. This
         // could occur for example if the user is not authenticated and anonymous requests are
         // performed which is okay from the perspective of the filters' responsibility.
-        .onErrorResume(it -> chain.filter(exchange));
+        .onErrorReturn(exchange.getRequest())
+        .flatMap(request -> chain.filter(exchange.mutate().request(request).build()));
   }
 }
