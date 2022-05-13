@@ -6,6 +6,7 @@ import de.innovationhub.prox.apigateway.userinfo.client.dto.OrganizationDto;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -17,7 +18,7 @@ public class UserServiceClientImpl implements UserServiceClient {
   private final RouteLocator routeLocator;
   private final AsyncCache<String, List<OrganizationDto>> cache;
 
-  public UserServiceClientImpl(RouteLocator routeLocator) {
+  public UserServiceClientImpl(@Lazy RouteLocator routeLocator) {
     this.routeLocator = routeLocator;
     cache = Caffeine.newBuilder()
         .expireAfterWrite(10, TimeUnit.MINUTES) // Expire after token lifespan and a bit
