@@ -1,4 +1,4 @@
-package de.innovationhub.prox.apigateway;
+package de.innovationhub.prox.apigateway.config;
 
 
 import java.util.List;
