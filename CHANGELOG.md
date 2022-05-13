@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.2.3...v1.3.0) (2022-05-13)
+
+
+### Features
+
+* append userinfo to headers ([f800334](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/f8003347cfd18182d842eb0ed71fd4f7030788ff))
+* introduce caching of responses ([e0f823f](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/e0f823f4467310138bd3fc93a392fea7734884a5))
+
+
+### Bug Fixes
+
+* properly mutate the request ([4903190](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/4903190dbc759ab49ea424eb1c64ad93a9c96dcb))
+
 ### [1.2.3](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.2.2...v1.2.3) (2022-04-04)
 
 ### [1.2.2](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.2.1...v1.2.2) (2022-03-30)
