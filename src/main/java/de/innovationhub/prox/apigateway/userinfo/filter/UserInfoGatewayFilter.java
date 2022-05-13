@@ -13,6 +13,9 @@ import reactor.core.publisher.Mono;
 
 /**
  * Filter that resolves user information and appends it to the request headers.
+ * TODO: At the moment this is a global filter. However, it can be discussed whether it makes
+ *       sense to use a GatewayFilter instead and only append it to the requests that really need
+ *       user-sensitive information
  */
 @Component
 public class UserInfoGatewayFilter implements GlobalFilter {

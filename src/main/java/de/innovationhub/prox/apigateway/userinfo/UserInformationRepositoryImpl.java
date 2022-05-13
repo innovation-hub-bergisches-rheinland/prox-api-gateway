@@ -11,6 +11,9 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class UserInformationRepositoryImpl implements UserInformationRepository {
 
+  // TODO: Atm we do a synchronous call to the user-service. We should use async communication
+  //       in the near future. Note that it might still be viable to reconcile the state using
+  //       synchronous calls.
   private final UserServiceClient userServiceClient;
 
   public UserInformationRepositoryImpl(UserServiceClient userServiceClient) {

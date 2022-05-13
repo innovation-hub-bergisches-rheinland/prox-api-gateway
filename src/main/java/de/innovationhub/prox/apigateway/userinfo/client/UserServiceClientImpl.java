@@ -1,7 +1,6 @@
 package de.innovationhub.prox.apigateway.userinfo.client;
 
 import com.github.benmanes.caffeine.cache.AsyncCache;
-import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import de.innovationhub.prox.apigateway.userinfo.client.dto.OrganizationDto;
 import java.util.List;
