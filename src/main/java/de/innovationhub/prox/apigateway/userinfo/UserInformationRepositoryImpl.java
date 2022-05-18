@@ -1,6 +1,7 @@
 package de.innovationhub.prox.apigateway.userinfo;
 
 import de.innovationhub.prox.apigateway.userinfo.client.UserServiceClient;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
@@ -26,6 +27,8 @@ public class UserInformationRepositoryImpl implements UserInformationRepository 
             token.getToken().getTokenValue())
         .map(res -> new UserInformation(token.getName(),
             res.stream().map(dto -> dto.id().toString()).collect(Collectors.toUnmodifiableSet())))
-        .doOnError(err -> log.error("Could not get memberships", err));
+        .doOnError(err -> log.error("Could not get memberships", err))
+        // If an error occurs, at least we can return the known information.
+        .onErrorReturn(new UserInformation(token.getName(), Collections.emptySet()));
   }
 }
