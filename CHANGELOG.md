@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.3.1...v1.4.0) (2022-05-26)
+
+
+### Features
+
+* add new owner-based project paths ([e34ee2b](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/e34ee2b3b68049914cdd42e13744d65e32a81eaa))
+* add owner project retrieval endpoints ([ef8731d](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/ef8731d15b481ee267ad3b8a1d9943e32e886567))
+* introduce context selector in project creation form ([2fedcc8](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/2fedcc8ebc218bb7a8eb507e68907b2ef6412627))
+
+
+### Bug Fixes
+
+* add userinfo filter to project modification paths ([eff68f2](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/eff68f2bebe1f909b2f819e836b7e206ed93135c))
+* add userinfo header on every project path ([8ab0720](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/8ab0720caf9a3b9bbf5ebced06622cf72321a899))
+* fix typo in local config ([4801e72](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/4801e72c752dca883c6ae0cc67fae20c2fbb9672))
+* update module path ([5f5debc](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/5f5debc0c70483b99b54658db3663b5b0dcd7570))
+
 ### [1.3.1](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.3.0...v1.3.1) (2022-05-13)
 
 ## [1.3.0](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.2.3...v1.3.0) (2022-05-13)
