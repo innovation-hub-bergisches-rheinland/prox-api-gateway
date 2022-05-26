@@ -28,6 +28,13 @@ data:
                 allowedMethods: "*"
                 allowedHeaders: "*"
           routes:
+            - id: project-service-user-mapping
+              uri: http://prox-project-service.prox.svc.cluster.local:8080
+              predicates:
+                - Method=POST
+                - Path=/users/*/projects,/organizations/*/projects,/user/projects
+              filters:
+                - AddUserInfoHeader
             - id: project-service
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
