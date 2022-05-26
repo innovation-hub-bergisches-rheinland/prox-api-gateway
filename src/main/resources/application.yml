@@ -21,29 +21,18 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
-        - id: project-service-user-mapping-write
+        - id: project-service-projects
           uri: http://localhost:8080
           predicates:
-            - Method=POST
-            - Path=/users/*/projects,/organizations/*/projects,/user/projects
-          filters:
-            - AddUserInfoHeader
-        - id: project-service-user-mapping-read
-          uri: http://localhost:8080
-          predicates:
-            - Method=GET
-            - Path=/users/*/projects,/organizations/*/projects,/user/projects
-        - id: project-service-write
-          uri: http://localhost:8080
-          predicates:
-            - Method=POST,PUT,PATCH,DELETE
-            - Path=/projects/**
+            - Path=/projects/**,/users/*/projects,/organizations/*/projects,/user/projects
           filters:
             - AddUserInfoHeader
         - id: project-service
           uri: http://localhost:8080
           predicates:
-            - Path=/projects/**,/modules/**,/studyPrograms/**,/specializations/**
+            - Path=/modules/**,/studyPrograms/**,/specializations/**
+          filters:
+            - AddUserInfoHeader
           metadata:
             openApiPath: "/v3/api-docs"
         - id: user-service
