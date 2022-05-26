@@ -49,7 +49,7 @@ spring:
         - id: user-service
           uri: https://api.prox.aws.innovation-hub.de
           predicates:
-            - Path=/user/**,/orgs/**,/users/**
+            - Path=/user/**,/organizations/**,/users/**
           metadata:
             openApiPath: "/q/openapi"
         - id: tag-service
