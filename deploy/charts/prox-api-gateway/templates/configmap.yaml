@@ -35,6 +35,13 @@ data:
                 - Path=/users/*/projects,/organizations/*/projects,/user/projects
               filters:
                 - AddUserInfoHeader
+            - id: project-service-write
+              uri: http://prox-project-service.prox.svc.cluster.local:8080
+              predicates:
+                - Method=POST,PUT,PATCH,DELETE
+                - Path=/projects/**
+              filters:
+                - AddUserInfoHeader
             - id: project-service
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
