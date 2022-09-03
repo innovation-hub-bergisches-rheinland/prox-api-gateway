@@ -32,8 +32,6 @@ data:
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
                 - Path=/projects/**,/users/*/projects,/organizations/*/projects,/user/projects
-              filters:
-                - AddUserInfoHeader
             - id: project-service
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:

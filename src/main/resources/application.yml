@@ -25,14 +25,10 @@ spring:
           uri: http://localhost:8080
           predicates:
             - Path=/projects/**,/users/*/projects,/organizations/*/projects,/user/projects
-          filters:
-            - AddUserInfoHeader
         - id: project-service
           uri: http://localhost:8080
           predicates:
             - Path=/modules/**,/studyPrograms/**,/specializations/**
-          filters:
-            - AddUserInfoHeader
           metadata:
             openApiPath: "/v3/api-docs"
         - id: user-service
