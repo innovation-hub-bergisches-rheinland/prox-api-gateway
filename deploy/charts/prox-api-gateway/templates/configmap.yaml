@@ -31,7 +31,7 @@ data:
             - id: project-service-user-mapping-write
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
-                - Path=/projects/**,/users/*/projects,/organizations/*/projects,/user/projects
+                - Path=/projects/**,/proposals/**,/users/*/projects,/users/*/proposals,/organizations/*/projects,/organizations/*/proposals,/user/projects,/user/proposals
             - id: project-service
               uri: http://prox-project-service.prox.svc.cluster.local:8080
               predicates:
