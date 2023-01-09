@@ -52,7 +52,7 @@ jobs:
             ./target/**
 
   # run tests on pre-built files
-  unit-test:
+  test:
     name: Unit Tests
 
     needs: [ build ]
@@ -95,6 +95,27 @@ jobs:
           path: reports-unit-tests.zip
           if-no-files-found: ignore
 
+  auto-merge:
+    runs-on: ubuntu-latest
+
+    needs: [ test ]
+
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]' }}
+
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1.3.5
+      - name: Auto merge patch and minor updates
+        if: ${{steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' || steps.dependabot-metadata.outputs.update-type == 'version-update:semver-minor'}}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   package:
     name: Maven package
