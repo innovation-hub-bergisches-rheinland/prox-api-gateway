@@ -44,7 +44,7 @@ jobs:
 
       # Upload the built artifacts
       - name: Store Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: maven-target.zip
           retention-days: 2
@@ -87,7 +87,7 @@ jobs:
           fi
 
       - name: Unit test reports
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: reports-unit-tests
@@ -152,7 +152,7 @@ jobs:
 
       # Upload the built artifacts
       - name: Store Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: maven-target.zip
           retention-days: 2
