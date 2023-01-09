@@ -1,59 +1,33 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
     name: api-gateway
   cloud:
     gateway:
-      x-forwarded:
-        port-enabled: false
-        host-enabled: false
-        proto-enabled: false
-        port-append: false
-        host-append: false
-        proto-append: false
-        enabled: false
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
-          "[/**]":
+          '[/**]':
             allowedOrigins: "*"
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
-        - id: project-service-projects
+        - id: prox-backend
           uri: http://localhost:8080
           predicates:
-            - Path=/projects/**,/proposals/**,/users/*/projects,/users/*/proposals,/organizations/*/projects,/organizations/*/proposals,/user/projects,/user/proposals
-        - id: project-service
+            - Path=/v2/**
+          filters:
+            - RewritePath=/v2/?(?<segment>.*), /$\{segment}
+        # For OpenAPI we simply redirect to prox-backend as it is the only service
+        - id: openapi
           uri: http://localhost:8080
           predicates:
-            - Path=/modules/**,/studyPrograms/**,/specializations/**
-          metadata:
-            openApiPath: "/v3/api-docs"
-        - id: user-service
-          uri: https://api.prox.aws.innovation-hub.de
-          predicates:
-            - Path=/user/**,/organizations/**,/users/**
-          metadata:
-            openApiPath: "/q/openapi"
-        - id: tag-service
-          uri: https://api.prox.aws.innovation-hub.de
-          predicates:
-            - Path=/tags/**,/tagCollections/**,/tagRecommendations/**
-          metadata:
-            openApiPath: "/v3/api-docs"
-        - id: job-service
-          uri: https://api.prox.aws.innovation-hub.de
-          predicates:
-            - Path=/jobOffers/**,/jobOfferTypes/**,/jobOfferEntryLevels/**
-          metadata:
-            openApiPath: "/v3/api-docs"
+            - Path=/v3/api-docs,/v3/api-docs/**,/swagger-resources/**,/swagger-ui.html,/swagger-ui/**,/webjars/**
+          filters:
+            - RewritePath=/v2/?(?<segment>.*), /$\{segment}
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: https://login.aws.innovation-hub.de/auth/realms/innovation-hub-bergisches-rheinland
-springdoc:
-  swagger-ui:
-    urls: # Do not remove! Workaround to set swagger ui urls programmatically
