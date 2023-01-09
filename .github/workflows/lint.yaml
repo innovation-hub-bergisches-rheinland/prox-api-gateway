@@ -57,7 +57,7 @@ jobs:
         run: mkdir -p ~/.m2 ; cp ${{ env.MAVEN_SETTINGS }} ~/.m2
 
       - name: Cache SonarCloud packages
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
