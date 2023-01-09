@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.4.1...v1.5.0) (2023-01-09)
+
+
+### Features
+
+* add proposal apis ([9a17848](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/commit/9a1784821c5e89b4c3fc520e0bf7b38e71fd4ada))
+
 ### [1.4.1](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.4.0...v1.4.1) (2022-09-03)
 
 ## [1.4.0](https://github.com/innovation-hub-bergisches-rheinland/prox-api-gateway/compare/v1.3.1...v1.4.0) (2022-05-26)
