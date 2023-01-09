@@ -162,7 +162,7 @@ jobs:
   release:
     name: Release
 
-    needs: [ unit-test, package ]
+    needs: [ test, package ]
 
     # Only run if a tag is created
     if: startsWith(github.ref, 'refs/tags/v')
