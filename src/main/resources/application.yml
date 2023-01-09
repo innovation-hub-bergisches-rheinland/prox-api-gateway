@@ -26,8 +26,3 @@ spring:
             - Path=/v3/api-docs,/v3/api-docs/**,/swagger-resources/**,/swagger-ui.html,/swagger-ui/**,/webjars/**
           filters:
             - RewritePath=/v2/?(?<segment>.*), /$\{segment}
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://login.aws.innovation-hub.de/auth/realms/innovation-hub-bergisches-rheinland
