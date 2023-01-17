@@ -74,7 +74,7 @@ jobs:
         run: mkdir -p ~/.m2 ; cp ${{ env.MAVEN_SETTINGS }} ~/.m2
 
       - name: Download build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: ./target
           name: maven-target.zip
@@ -138,7 +138,7 @@ jobs:
           cache: 'maven'
 
       - name: Download build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: ./target
           name: maven-target.zip
@@ -196,7 +196,7 @@ jobs:
 
 
       - name: Download build
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: ./target
           name: maven-target.zip
