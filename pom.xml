@@ -30,7 +30,7 @@
     <maven-toolchains-plugin.version.>3.0.0</maven-toolchains-plugin.version.>
     <sortpom-maven-plugin.version>3.0.0</sortpom-maven-plugin.version>
     <spotless-maven-plugin.version>2.30.0</spotless-maven-plugin.version>
-    <spring-cloud.version>2022.0.0</spring-cloud.version>
+    <spring-cloud.version>2022.0.1</spring-cloud.version>
   </properties>
 
   <dependencyManagement>
