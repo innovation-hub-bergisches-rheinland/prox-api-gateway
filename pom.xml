@@ -29,7 +29,7 @@
     <java.version>17</java.version>
     <maven-toolchains-plugin.version.>3.0.0</maven-toolchains-plugin.version.>
     <sortpom-maven-plugin.version>3.0.0</sortpom-maven-plugin.version>
-    <spotless-maven-plugin.version>2.32.0</spotless-maven-plugin.version>
+    <spotless-maven-plugin.version>2.33.0</spotless-maven-plugin.version>
     <spring-cloud.version>2022.0.1</spring-cloud.version>
   </properties>
 
