@@ -3,6 +3,11 @@
 The purpose of this service is to provide routing capabilities to other services. The API gateway
 acts as a single entrypoint for multiple services.
 
+## ⚠️ DEPRECATED ⚠️
+
+The service has been deprecated as it's only purpose is forwarding API calls to a single service.
+We don't see any reason to use a spring-based service for this, rather simply use a reverse proxy.
+
 #### A note on automatic formatting and linting
 
 We partially use the Node.js runtime and npm to introduce a consistent code formatting in the whole
